@@ -7,6 +7,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
+
 app.post("/api/form", (req, res) => {
   console.log(req.body);
   //Formating content to be send
