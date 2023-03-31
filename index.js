@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
+const cors = require("cors");
+
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -44,10 +47,22 @@ app.post("/api/form", (req, res) => {
   transporter.sendMail(mailOptions, function(error, info) {
     if (error) {
       console.log(error);
+      return res.send({
+        result: false,
+        message: "Mail Not sent"
+      });
     } else {
       console.log("Email sent: " + info.response);
+      return res.send({
+        result: true,
+        message: "Mail sent"
+      });
     }
   });
+  // return res.send({
+  //   result: true,
+  //   message: "Mail sent"
+  // });
 });
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
