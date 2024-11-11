@@ -29,7 +29,7 @@ app.post("/api/form", (req, res) => {
     service: "gmail",
     auth: {
       user: "funnyboy14143@gmail.com",
-      pass: "wmclufigfkxisyvy"
+      pass: "lggz rsxp blqb motd"
     },
     tls: {
       rejectUnauthorized: false
